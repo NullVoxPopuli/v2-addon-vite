@@ -8,6 +8,8 @@ node_modules/
 
 # misc
 .DS_Store
+.turbo
+.turbo-build.log
 /.env*
 /.pnp*
 /.pnpm-debug.log

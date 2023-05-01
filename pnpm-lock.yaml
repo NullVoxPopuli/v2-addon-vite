@@ -150,6 +150,79 @@ importers:
         specifier: ^5.0.4
         version: 5.0.4
 
+  forked-packages/ember-test-waiters:
+    dependencies:
+      '@embroider/addon-shim':
+        specifier: ^1.0.0
+        version: 1.8.4
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.17.0
+        version: 7.21.5
+      '@babel/eslint-parser':
+        specifier: ^7.18.2
+        version: 7.21.3(@babel/core@7.21.5)(eslint@7.32.0)
+      '@babel/plugin-proposal-class-properties':
+        specifier: ^7.16.7
+        version: 7.18.6(@babel/core@7.21.5)
+      '@babel/plugin-proposal-decorators':
+        specifier: ^7.17.0
+        version: 7.21.0(@babel/core@7.21.5)
+      '@babel/plugin-syntax-decorators':
+        specifier: ^7.17.0
+        version: 7.21.0(@babel/core@7.21.5)
+      '@babel/preset-typescript':
+        specifier: ^7.21.5
+        version: 7.21.5(@babel/core@7.21.5)
+      '@embroider/addon-dev':
+        specifier: ^3.0.0
+        version: 3.0.0(rollup@2.79.1)
+      '@rollup/plugin-babel':
+        specifier: ^5.3.0
+        version: 5.3.1(@babel/core@7.21.5)(rollup@2.79.1)
+      '@tsconfig/ember':
+        specifier: ^2.0.0
+        version: 2.0.0
+      concurrently:
+        specifier: ^7.2.1
+        version: 7.6.0
+      ember-source:
+        specifier: ^4.12.0
+        version: 4.12.0(patch_hash=ear5wwaur73xyikzrt7wprlq2m)(@babel/core@7.21.5)(@glimmer/component@1.1.2)(webpack@5.81.0)
+      ember-template-lint:
+        specifier: ^4.0.0
+        version: 4.18.2
+      eslint:
+        specifier: ^7.32.0
+        version: 7.32.0
+      eslint-config-prettier:
+        specifier: ^8.3.0
+        version: 8.8.0(eslint@7.32.0)
+      eslint-plugin-ember:
+        specifier: ^10.5.8
+        version: 10.6.1(eslint@7.32.0)
+      eslint-plugin-node:
+        specifier: ^11.1.0
+        version: 11.1.0(eslint@7.32.0)
+      eslint-plugin-prettier:
+        specifier: ^4.0.0
+        version: 4.2.1(eslint-config-prettier@8.8.0)(eslint@7.32.0)(prettier@2.8.8)
+      prettier:
+        specifier: ^2.5.1
+        version: 2.8.8
+      rollup:
+        specifier: ^2.67.0
+        version: 2.79.1
+      rollup-plugin-copy:
+        specifier: ^3.4.0
+        version: 3.4.0
+      rollup-plugin-ts:
+        specifier: ^3.2.0
+        version: 3.2.0(@babel/core@7.21.5)(@babel/preset-typescript@7.21.5)(rollup@2.79.1)(typescript@5.0.4)
+      typescript:
+        specifier: ^5.0.4
+        version: 5.0.4
+
   the-v2-addon:
     dependencies:
       '@embroider/addon-shim':
