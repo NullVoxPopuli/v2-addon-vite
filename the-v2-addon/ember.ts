@@ -89,6 +89,7 @@ export function emberVirtualModules(options: Options = {}): Plugin {
           '@ember/instrumentation': ember('@ember/instrumentation'),
           '@ember/modifier': ember('@ember/modifier'),
           '@ember/object': ember('@ember/object'),
+          '@ember/owner': ember('@ember/owner'),
           '@ember/polyfills': ember('@ember/polyfills'),
           '@ember/routing': ember('@ember/routing'),
           '@ember/runloop': ember('@ember/runloop'),

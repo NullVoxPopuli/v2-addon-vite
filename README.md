@@ -1,37 +1,5 @@
-the-v2-addon
-==============================================================================
+Instructions
 
-[Short description of the addon.]
+1. `pnpm install`
+2. `pnpm start`
 
-
-Compatibility
-------------------------------------------------------------------------------
-
-* Ember.js v3.28 or above
-* Embroider or ember-auto-import v2
-
-
-Installation
-------------------------------------------------------------------------------
-
-```
-ember install the-v2-addon
-```
-
-
-Usage
-------------------------------------------------------------------------------
-
-[Longer description of how to use the addon in apps.]
-
-
-Contributing
-------------------------------------------------------------------------------
-
-See the [Contributing](CONTRIBUTING.md) guide for details.
-
-
-License
-------------------------------------------------------------------------------
-
-This project is licensed under the [MIT License](LICENSE.md).

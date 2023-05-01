@@ -5,10 +5,13 @@
   "repository": "",
   "license": "MIT",
   "author": "NullVoxPopuli",
-  "scripts": {},
+  "scripts": {
+    "start": "pnpm turbo --filter the-v2-addon start --output-logs errors-only"
+  },
   "devDependencies": {
     "concurrently": "^7.2.1",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "turbo": "^1.9.3"
   },
   "volta": {
     "node": "18.16.0",
