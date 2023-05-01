@@ -35,6 +35,10 @@
     "@babel/plugin-proposal-decorators": "^7.17.0",
     "@babel/plugin-syntax-decorators": "^7.17.0",
     "@embroider/addon-dev": "^3.0.0",
+    "@glint/core": "^1.0.0",
+    "@glint/template": "^1.0.0",
+    "@glint/environment-ember-loose": "^1.0.0",
+    "@glint/environment-ember-template-imports": "^1.0.0",
     "@rollup/plugin-babel": "^5.3.0",
     "concurrently": "^7.2.1",
     "ember-template-lint": "^4.0.0",
@@ -52,6 +56,9 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "volta": {
+    "extends": "../../package.json"
   },
   "ember-addon": {
     "version": 2,

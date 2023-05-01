@@ -26,7 +26,10 @@
     "prepack": "rollup --config"
   },
   "dependencies": {
-    "@embroider/addon-shim": "^1.0.0"
+    "@ember/test-waiters": "workspace:../ember-test-waiters",
+    "@embroider/addon-shim": "^1.0.0",
+    "@embroider/macros": "^1.10.0",
+    "@embroider/util": "^1.10.0"
   },
   "peerDependencies": {
     "ember-source": "*"
@@ -39,12 +42,17 @@
     "@babel/plugin-syntax-decorators": "^7.17.0",
     "@babel/preset-typescript": "^7.21.5",
     "@embroider/addon-dev": "^3.0.0",
+    "@glint/core": "^1.0.0",
+    "@glint/environment-ember-loose": "^1.0.0",
+    "@glint/environment-ember-template-imports": "^1.0.0",
+    "@glint/template": "^1.0.0",
     "@rollup/plugin-babel": "^5.3.0",
     "@tsconfig/ember": "^2.0.0",
     "concurrently": "^7.2.1",
+    "ember-cli-htmlbars": "^6.2.0",
+    "ember-source": "^4.12.0",
     "ember-template-lint": "^4.0.0",
     "eslint": "^7.32.0",
-    "ember-source": "^4.12.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-ember": "^10.5.8",
     "eslint-plugin-node": "^11.1.0",
@@ -60,6 +68,9 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "volta": {
+    "extends": "../../package.json"
   },
   "ember-addon": {
     "version": 2,

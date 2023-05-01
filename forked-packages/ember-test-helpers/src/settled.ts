@@ -39,32 +39,6 @@ const _internalGetPendingRequestsCount = () => {
   return 0;
 };
 
-if (typeof jQuery !== 'undefined' && _internalPendingRequestsModule) {
-  // This exists to ensure that the AJAX listeners setup by Ember itself
-  // (which as of 2.17 are not properly torn down) get cleared and released
-  // when the application is destroyed. Without this, any AJAX requests
-  // that happen _between_ acceptance tests will always share
-  // `pendingRequests`.
-  //
-  // This can be removed once Ember 4.0.0 is released
-  EmberApplicationInstance.reopen({
-    willDestroy(this: EmberApplicationInstance, ...args: any[]) {
-      jQuery(document).off(
-        'ajaxSend',
-        _internalPendingRequestsModule.incrementPendingRequests
-      );
-      jQuery(document).off(
-        'ajaxComplete',
-        _internalPendingRequestsModule.decrementPendingRequests
-      );
-
-      _internalPendingRequestsModule.clearPendingRequests();
-
-      this._super(...args);
-    },
-  });
-}
-
 let requests: XMLHttpRequest[];
 
 /**
@@ -118,19 +92,8 @@ function decrementAjaxPendingRequests(event: any, xhr: XMLHttpRequest): void {
   @private
 */
 export function _teardownAJAXHooks() {
-  // jQuery will not invoke `ajaxComplete` if
-  //    1. `transport.send` throws synchronously and
-  //    2. it has an `error` option which also throws synchronously
-
   // We can no longer handle any remaining requests
   requests = [];
-
-  if (typeof jQuery === 'undefined') {
-    return;
-  }
-
-  jQuery(document).off('ajaxSend', incrementAjaxPendingRequests);
-  jQuery(document).off('ajaxComplete', decrementAjaxPendingRequests);
 }
 
 /**
@@ -140,13 +103,6 @@ export function _teardownAJAXHooks() {
 */
 export function _setupAJAXHooks() {
   requests = [];
-
-  if (typeof jQuery === 'undefined') {
-    return;
-  }
-
-  jQuery(document).on('ajaxSend', incrementAjaxPendingRequests);
-  jQuery(document).on('ajaxComplete', decrementAjaxPendingRequests);
 }
 
 let _internalCheckWaiters: Function;

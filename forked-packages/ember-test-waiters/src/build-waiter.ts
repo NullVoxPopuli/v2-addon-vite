@@ -35,7 +35,7 @@ class TestWaiterImpl<T extends object | Primitive = Token> implements TestWaiter
     this._register();
 
     if (this.items.has(token)) {
-      throw new Error(`beginAsync called for ${token} but it is already pending.`);
+      throw new Error(`beginAsync called for ${token.toString()} but it is already pending.`);
     }
 
     let error = new Error();
