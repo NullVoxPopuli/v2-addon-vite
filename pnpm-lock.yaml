@@ -21,6 +21,9 @@ importers:
 
   forked-packages/ember-qunit:
     dependencies:
+      '@ember/test-helpers':
+        specifier: workspace:../ember-test-helpers
+        version: link:../ember-test-helpers
       '@embroider/addon-shim':
         specifier: ^1.0.0
         version: 1.8.4

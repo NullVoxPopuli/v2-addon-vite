@@ -46,14 +46,8 @@ export function emberVirtualModules(options: Options = {}): Plugin {
           * NOTE: all of these things need to be converted to v2 addons.
           */
         alias: {
-          // Test Dependencies
-          'ember-qunit': nm('ember-qunit/addon-test-support'),
-          '@ember/test-helpers': nm('@ember/test-helpers/addon-test-support/@ember/test-helpers'),
-
-
-
           // Glimmer
-          '@glimmer/env': join(__dirname, 'replacements', 'glimmer-env.js'),
+          // '@glimmer/env': join(__dirname, 'replacements', 'glimmer-env.js'),
           // '@glimmer/tracking/primitives/cache': ember('@glimmer/tracking/primitives/cache.js'),
           '@glimmer/tracking': ember('@glimmer/tracking'),
 

@@ -26,6 +26,7 @@
     "prepack": "rollup --config"
   },
   "dependencies": {
+    "@ember/test-helpers": "workspace:../ember-test-helpers",
     "@embroider/addon-shim": "^1.0.0"
   },
   "devDependencies": {

@@ -1,7 +1,6 @@
 /* globals Testem */
 
 export { default as QUnitAdapter, nonTestDoneCallback } from './adapter';
-export { loadTests } from './test-loader';
 
 import './qunit-configuration';
 
@@ -11,7 +10,6 @@ if (typeof Testem !== 'undefined') {
 
 import { _backburner } from '@ember/runloop';
 import { resetOnerror, getTestMetadata } from '@ember/test-helpers';
-import { loadTests } from './test-loader';
 import Ember from 'ember';
 import * as QUnit from 'qunit';
 import QUnitAdapter from './adapter';
@@ -183,7 +181,8 @@ export function setupTestIsolationValidation(delay) {
  */
 export function start(options = {}) {
   if (options.loadTests !== false) {
-    loadTests();
+    console.log('TODO: implement Vite plugin for loading tests');
+    // loadTests();
   }
 
   if (options.setupTestContainer !== false) {

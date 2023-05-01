@@ -6,7 +6,6 @@ import {
   TestContext,
 } from './setup-context';
 import global from './global';
-import hasEmberVersion from './has-ember-version';
 import settled from './settled';
 import getTestMetadata from './test-metadata';
 import { runHooks } from './helper-hooks';
@@ -18,7 +17,7 @@ export interface ApplicationTestContext extends TestContext {
   element?: Element | null;
 }
 
-const CAN_USE_ROUTER_EVENTS = hasEmberVersion(3, 6);
+const CAN_USE_ROUTER_EVENTS = true;
 let routerTransitionsPending: boolean | null = null;
 const ROUTER = new WeakMap();
 const HAS_SETUP_ROUTER = new WeakMap();
@@ -204,7 +203,7 @@ export function currentRouteName(): string {
   return currentRouteName;
 }
 
-const HAS_CURRENT_URL_ON_ROUTER = hasEmberVersion(2, 13);
+const HAS_CURRENT_URL_ON_ROUTER = true;
 
 /**
   @public
