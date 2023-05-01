@@ -1,4 +1,4 @@
 packages:
-  - the-v2-addon
-  - forked-packages/*
-  - support-packages/*
+  - "the-v2-addon"
+  - "forked-packages/*"
+  - "support-packages/*"
