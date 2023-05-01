@@ -1,1 +1,2 @@
-import "qunit/qunit/qunit.js";
+import "./rendering/example-test";
+import "qunit";

@@ -1,4 +1,9 @@
 import { defineConfig } from 'vite'
+import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
+import babel from 'vite-plugin-babel';
+import { emberVirtualModules } from './ember';
+
+import packageManifest from '../package.json';
 
 export default defineConfig(async ({ command, mode }) => {
   console.debug(
@@ -11,9 +16,16 @@ export default defineConfig(async ({ command, mode }) => {
     return {
       root: 'tests',
       clearScreen: false,
-      plugins: [],
+      plugins: [
+        babel(),
+        glimmerTemplateTag(),
+        emberVirtualModules(),
+      ],
       resolve: {
-        extensions: ['.js', '.ts', '.gjs', '.gts', '.json']
+        extensions: ['.js', '.ts', '.gjs', '.gts', '.json'],
+        alias: {
+          [packageManifest.name]: '.',
+        }
       }
     };
   }

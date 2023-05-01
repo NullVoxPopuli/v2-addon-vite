@@ -1,3 +1,3 @@
 
 
-export const Demo = <template>A Demo Component</template>;
+export const Demo = <template>A Demo Component: @foo:{{@foo}}</template>;

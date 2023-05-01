@@ -1,0 +1,93 @@
+diff --git a/dist/packages/ember/index.js b/dist/packages/ember/index.js
+index d29cee7fe7a1ee1af2000d4312db93e57c33889a..d03a79b63779a6a6dce9646111fbb71e07ea3d5b 100644
+--- a/dist/packages/ember/index.js
++++ b/dist/packages/ember/index.js
+@@ -1,7 +1,6 @@
+ /**
+ @module ember
+ */
+-import require, { has } from 'require';
+ import { getENV, getLookup, setLookup } from '@ember/-internals/environment';
+ import * as utils from '@ember/-internals/utils';
+ import { Registry, Container } from '@ember/-internals/container';
+@@ -330,10 +329,8 @@ const PartialEmber = {
+     hasPropertyAccessors: true
+   },
+   __loader: {
+-    require,
+     define,
+-    // @ts-expect-error These properties don't appear as being defined
+-    registry: typeof requirejs !== 'undefined' ? requirejs.entries : require.entries
++    registry: [],
+   }
+ };
+ const Ember = PartialEmber;
+@@ -430,68 +427,12 @@ function defineEmberTemplateCompilerLazyLoad(key) {
+     configurable: true,
+     enumerable: true,
+     get() {
+-      if (has('ember-template-compiler')) {
+-        let templateCompiler = require('ember-template-compiler');
+-        EmberHTMLBars.precompile = EmberHandlebars.precompile = templateCompiler.precompile;
+-        EmberHTMLBars.compile = EmberHandlebars.compile = templateCompiler.compile;
+-        Object.defineProperty(Ember, 'HTMLBars', {
+-          configurable: true,
+-          writable: true,
+-          enumerable: true,
+-          value: EmberHTMLBars
+-        });
+-        Object.defineProperty(Ember, 'Handlebars', {
+-          configurable: true,
+-          writable: true,
+-          enumerable: true,
+-          value: EmberHandlebars
+-        });
+-      }
+       return key === 'Handlebars' ? EmberHandlebars : EmberHTMLBars;
+     }
+   });
+ }
+ defineEmberTemplateCompilerLazyLoad('HTMLBars');
+ defineEmberTemplateCompilerLazyLoad('Handlebars');
+-// do this to ensure that Ember.Test is defined properly on the global
+-// if it is present.
+-function defineEmberTestingLazyLoad(key) {
+-  Object.defineProperty(Ember, key, {
+-    configurable: true,
+-    enumerable: true,
+-    get() {
+-      if (has('ember-testing')) {
+-        let testing = require('ember-testing');
+-        let {
+-          Test,
+-          Adapter,
+-          QUnitAdapter,
+-          setupForTesting
+-        } = testing;
+-        // @ts-expect-error We should not do this
+-        Test.Adapter = Adapter;
+-        // @ts-expect-error We should not do this
+-        Test.QUnitAdapter = QUnitAdapter;
+-        Object.defineProperty(Ember, 'Test', {
+-          configurable: true,
+-          writable: true,
+-          enumerable: true,
+-          value: Test
+-        });
+-        Object.defineProperty(Ember, 'setupForTesting', {
+-          configurable: true,
+-          writable: true,
+-          enumerable: true,
+-          value: setupForTesting
+-        });
+-        return key === 'Test' ? Test : setupForTesting;
+-      }
+-      return undefined;
+-    }
+-  });
+-}
+-defineEmberTestingLazyLoad('Test');
+-defineEmberTestingLazyLoad('setupForTesting');
+ // @ts-expect-error Per types, runLoadHooks requires a second parameter. Should we loosen types?
+ runLoadHooks('Ember');
+ export default Ember;

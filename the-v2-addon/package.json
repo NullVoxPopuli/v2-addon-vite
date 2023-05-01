@@ -2,6 +2,7 @@
   "name": "the-v2-addon",
   "version": "0.0.0",
   "description": "The default blueprint for Embroider v2 addons.",
+  "type": "module",
   "keywords": [
     "ember-addon"
   ],
@@ -35,9 +36,12 @@
     "@babel/plugin-syntax-decorators": "^7.17.0",
     "@ember/test-helpers": "^2.9.3",
     "@embroider/addon-dev": "^3.0.0",
+    "@glimmer/component": "^1.1.2",
     "@rollup/plugin-babel": "^5.3.0",
+    "@tsconfig/ember": "^2.0.0",
     "concurrently": "^7.2.1",
     "ember-qunit": "^6.2.0",
+    "ember-source": "^4.12.0",
     "ember-template-lint": "^4.0.0",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
@@ -49,8 +53,10 @@
     "qunit-dom": "^2.0.0",
     "rollup": "^2.67.0",
     "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-glimmer-template-tag": "^0.4.0",
     "typescript": "^5.0.4",
-    "vite": "^4.3.3"
+    "vite": "^4.3.3",
+    "vite-plugin-babel": "^1.1.3"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -70,5 +76,9 @@
     ".": "./dist/index.js",
     "./*": "./dist/*.js",
     "./addon-main.js": "./addon-main.cjs"
+  },
+  "peerDependencies": {
+    "@glimmer/component": "^1.1.2",
+    "ember-source": "^4.12.0"
   }
 }
