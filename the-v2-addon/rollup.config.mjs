@@ -1,6 +1,7 @@
 import { babel } from '@rollup/plugin-babel';
 import copy from 'rollup-plugin-copy';
 import { Addon } from '@embroider/addon-dev/rollup';
+import { glimmerTemplateTag } from 'rollup-plugin-glimmer-template-tag';
 
 const addon = new Addon({
   srcDir: 'src',
@@ -36,6 +37,7 @@ export default {
     babel({
       babelHelpers: 'bundled',
     }),
+    glimmerTemplateTag(),
 
     // Ensure that standalone .hbs files are properly integrated as Javascript.
     addon.hbs(),

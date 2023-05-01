@@ -5,10 +5,13 @@
   "repository": "",
   "license": "MIT",
   "author": "NullVoxPopuli",
-  "scripts": {
-  },
+  "scripts": {},
   "devDependencies": {
     "concurrently": "^7.2.1",
     "prettier": "^2.5.1"
+  },
+  "volta": {
+    "node": "18.16.0",
+    "pnpm": "8.3.1"
   }
 }
