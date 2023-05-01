@@ -58,7 +58,7 @@
     "main": "addon-main.cjs"
   },
   "exports": {
-    ".": "./dist/index.js", 
+    ".": "./dist/index.js",
     "./*": "./dist/*.js",
     "./addon-main.js": "./addon-main.cjs"
   }
