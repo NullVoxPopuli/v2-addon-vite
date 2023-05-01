@@ -1,0 +1,22 @@
+{
+  "name": "the-v2-addon",
+  "version": "0.0.0",
+  "private": true,
+  "repository": "",
+  "license": "MIT",
+  "author": "NullVoxPopuli",
+  "scripts": {
+    "build": "npm run build --workspace the-v2-addon",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
+    "prepare": "npm run build",
+    "start": "concurrently 'npm:start:*' --restart-after 5000 --prefix-colors cyan,white,yellow",
+    "start:addon": "npm start --workspace the-v2-addon -- --no-watch.clearScreen",
+    "start:test-app": "npm start --workspace test-app",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "prettier": "^2.5.1"
+  }
+}
