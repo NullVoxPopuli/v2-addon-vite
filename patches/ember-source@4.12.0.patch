@@ -1,5 +1,39 @@
+diff --git a/dist/packages/@ember/test/index.js b/dist/packages/@ember/test/index.js
+index 8543f8c7283f4ebae276852cde8508221a971414..a2c3c27791e4d3f16a38b69b9f30bd86a2a5bd0d 100644
+--- a/dist/packages/@ember/test/index.js
++++ b/dist/packages/@ember/test/index.js
+@@ -1,25 +1,2 @@
+-import require, { has } from 'require';
+-export let registerAsyncHelper;
+-export let registerHelper;
+-export let registerWaiter;
+-export let unregisterHelper;
+-export let unregisterWaiter;
+-if (has('ember-testing')) {
+-  let {
+-    Test
+-  } = require('ember-testing');
+-  registerAsyncHelper = Test.registerAsyncHelper;
+-  registerHelper = Test.registerHelper;
+-  registerWaiter = Test.registerWaiter;
+-  unregisterHelper = Test.unregisterHelper;
+-  unregisterWaiter = Test.unregisterWaiter;
+-} else {
+-  let testingNotAvailableMessage = () => {
+-    throw new Error('Attempted to use test utilities, but `ember-testing` was not included');
+-  };
+-  registerAsyncHelper = testingNotAvailableMessage;
+-  registerHelper = testingNotAvailableMessage;
+-  registerWaiter = testingNotAvailableMessage;
+-  unregisterHelper = testingNotAvailableMessage;
+-  unregisterWaiter = testingNotAvailableMessage;
+-}
+\ No newline at end of file
++export { registerHelper, registerAsyncHelper, unregisterHelper } from 'ember-testing/lib/test/helpers';
++export { registerWaiter, unregisterWaiter } from 'ember-testing/lib/test/waiters';
++
 diff --git a/dist/packages/ember/index.js b/dist/packages/ember/index.js
-index d29cee7fe7a1ee1af2000d4312db93e57c33889a..d03a79b63779a6a6dce9646111fbb71e07ea3d5b 100644
+index d29cee7fe7a1ee1af2000d4312db93e57c33889a..c6233ffeeb2bf9cb64252d1863085658ea3149ec 100644
 --- a/dist/packages/ember/index.js
 +++ b/dist/packages/ember/index.js
 @@ -1,7 +1,6 @@
@@ -10,19 +44,19 @@ index d29cee7fe7a1ee1af2000d4312db93e57c33889a..d03a79b63779a6a6dce9646111fbb71e
  import { getENV, getLookup, setLookup } from '@ember/-internals/environment';
  import * as utils from '@ember/-internals/utils';
  import { Registry, Container } from '@ember/-internals/container';
-@@ -330,10 +329,8 @@ const PartialEmber = {
+@@ -330,10 +329,7 @@ const PartialEmber = {
      hasPropertyAccessors: true
    },
    __loader: {
 -    require,
-     define,
+-    define,
 -    // @ts-expect-error These properties don't appear as being defined
 -    registry: typeof requirejs !== 'undefined' ? requirejs.entries : require.entries
 +    registry: [],
    }
  };
  const Ember = PartialEmber;
-@@ -430,68 +427,12 @@ function defineEmberTemplateCompilerLazyLoad(key) {
+@@ -430,68 +426,12 @@ function defineEmberTemplateCompilerLazyLoad(key) {
      configurable: true,
      enumerable: true,
      get() {

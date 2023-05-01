@@ -26,6 +26,7 @@
     "prepack": "rollup --config"
   },
   "dependencies": {
+    "@babel/runtime": "^7.21.5",
     "@ember/test-waiters": "workspace:../ember-test-waiters",
     "@embroider/addon-shim": "^1.0.0",
     "@embroider/macros": "^1.10.0",

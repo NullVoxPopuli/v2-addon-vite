@@ -1,6 +1,13 @@
 {
   "plugins": [
     "ember-template-imports/src/babel-plugin",
+    ["babel-plugin-ember-template-compilation", {
+      "compilerPath": "ember-source/dist/ember-template-compiler",
+      "enableLegacyModules": [
+        "ember-cli-htmlbars"
+      ]
+    }],
+    "@embroider/macros/src/babel/macros-babel-plugin.js",
     "@embroider/addon-dev/template-colocation-plugin",
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     "@babel/plugin-proposal-class-properties"

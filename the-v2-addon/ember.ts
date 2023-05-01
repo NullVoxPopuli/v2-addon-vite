@@ -3,8 +3,8 @@ import { type Plugin, type PluginOption } from 'vite';
 import { join, dirname } from 'node:path';
 import { createRequire } from 'node:module';
 import * as url from 'node:url';
-import { testReporter } from './middleware/test-reporter.mjs';
-import { selfHtml } from './middleware/self-html.mjs';
+// import { testReporter } from './middleware/test-reporter.mjs';
+// import { selfHtml } from './middleware/self-html.mjs';
 
 const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 const require = createRequire(import.meta.url);
@@ -41,13 +41,21 @@ export function emberVirtualModules(options: Options = {}): Plugin {
           // process.cwd(),
         ]
       },
+      // years of node trauma incorrectness to unwind...
+      define: {
+        'process.env': {},
+        'os.tmpdir': '() => {}',
+      },
       resolve: {
         /**
           * NOTE: all of these things need to be converted to v2 addons.
           */
         alias: {
+          // TODO: v2ify
+          '@embroider/util': nm('@embroider/util/addon'),
           // Glimmer
-          // '@glimmer/env': join(__dirname, 'replacements', 'glimmer-env.js'),
+          // dev-stub:
+          '@glimmer/env': join(__dirname, 'glimmer-env.js'),
           // '@glimmer/tracking/primitives/cache': ember('@glimmer/tracking/primitives/cache.js'),
           '@glimmer/tracking': ember('@glimmer/tracking'),
 
@@ -68,6 +76,7 @@ export function emberVirtualModules(options: Options = {}): Plugin {
           '@glimmer/wire-format': eDep('@glimmer/wire-format.js'),
 
           // Ember
+          'dag-map': nm('dag-map'),
           '@ember/-internals': ember('@ember/-internals'),
           '@ember/application': ember('@ember/application'),
           '@ember/array': ember('@ember/array'),
@@ -76,6 +85,8 @@ export function emberVirtualModules(options: Options = {}): Plugin {
           '@ember/controller': ember('@ember/controller'),
           '@ember/debug': ember('@ember/debug'),
           '@ember/destroyable': ember('@ember/destroyable'),
+          // '@ember/engine/-private/container-proxy-mixin': ember('@ember/engine/-private/container-proxy-mixin'),
+          // '@ember/engine/-private/registry-proxy-mixin': ember('@ember/engine/-private/registry-proxy-mixin'),
           '@ember/engine': ember('@ember/engine'),
           '@ember/enumerable': ember('@ember/enumerable'),
           '@ember/error': ember('@ember/error'),
@@ -90,7 +101,9 @@ export function emberVirtualModules(options: Options = {}): Plugin {
           '@ember/service': ember('@ember/service'),
           '@ember/string': ember('@ember/string'),
           '@ember/template': ember('@ember/template'),
+          '@ember/template-factory': ember('@ember/template-factory'),
           '@ember/template-compilation': ember('@ember/template-compilation'),
+          '@ember/renderer': ember('@ember/renderer'),
           '@ember/test': ember('@ember/test'),
           '@ember/utils': ember('@ember/utils'),
           '@ember/version': ember('@ember/version'),
